@@ -32,5 +32,5 @@ if __name__ == "__main__":
             coords = get_coords_without_address(session)
             process_and_save_addresses(session, coords)
             session.close()
-            logger.info('Закончил обработку координат. Ожидание 100 секунд')
-            time.sleep(100)
+            logger.info('Закончил обработку координат. Ожидание 120 секунд')
+            time.sleep(120)
