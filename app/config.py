@@ -1,0 +1,5 @@
+import os
+
+SQLALCHEMY_DATABASE_URL = os.getenv('SQLALCHEMY_DATABASE_URL', 'sqlite:///default.db')
+
+NOMINATIM_USER_AGENT = os.getenv('NOMINATIM_USER_AGENT', 'Fx03bQYO3')
