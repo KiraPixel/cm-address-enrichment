@@ -19,21 +19,20 @@ class CashCesar(Base):
     device_type = Column(Text, nullable=False)
     linked = Column(Boolean, nullable=True, default=False)  # TINYINT(1) NULL DEFAULT '0'
 
-
-class CashWialon(Base):
-    __tablename__ = 'cash_wialon'
-    id = Column(Integer, primary_key=True, index=True)
+class CashAxenta(Base):
+    __tablename__ = 'cash_axenta'
+    id = Column(Integer, primary_key=True)
     uid = Column(Integer, nullable=False, default=0)
     nm = Column(Text, nullable=False)
     pos_x = Column(Float, default=0.0)
     pos_y = Column(Float, default=0.0)
     gps = Column(Integer, default=0)
-    valid_nav = Column(Integer, default=1)
     last_time = Column(Integer, default=0)
     last_pos_time = Column(Integer, default=0)
-    linked = Column(Boolean, nullable=True, default=False)  # TINYINT(1) NULL DEFAULT '0'
+    connected_status = Column(Boolean, nullable=True, default=False)
     cmd = Column(Text, nullable=True, default='')
     sens = Column(Text, nullable=True, default='')
+    valid_nav = Column(Integer, nullable=True, default=1)
 
 class Coord(Base):
     __tablename__ = 'coord_cash'

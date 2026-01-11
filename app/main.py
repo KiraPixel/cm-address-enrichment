@@ -4,7 +4,7 @@ import time
 import logging
 
 from sqlalchemy import and_, func, select, union_all, and_, or_
-from app.models import CashCesar, CashWialon, Coord, SystemSettings, get_engine, create_session
+from app.models import CashCesar, CashAxenta, Coord, SystemSettings, get_engine, create_session
 from app.modules.location_module import get_address_decorator
 
 
@@ -36,15 +36,15 @@ def get_coords_without_address(session):
         func.round(CashCesar.pos_y, 4) != 0
     )
 
-    wialon_query = select(
-        func.round(CashWialon.pos_y, 4).label("pos_x"),
-        func.round(CashWialon.pos_x, 4).label("pos_y")
+    axenta_query = select(
+        func.round(CashAxenta.pos_x, 4).label("pos_x"),
+        func.round(CashAxenta.pos_y, 4).label("pos_y")
     ).where(
-        func.round(CashWialon.pos_y, 4) != 0,
-        func.round(CashWialon.pos_x, 4) != 0
+        func.round(CashAxenta.pos_x, 4) != 0,
+        func.round(CashAxenta.pos_y, 4) != 0
     )
 
-    combined = union_all(cesar_query, wialon_query).subquery("combined")
+    combined = union_all(cesar_query, axenta_query).subquery("combined")
 
     coord_query = (
         select(combined.c.pos_x, combined.c.pos_y)
